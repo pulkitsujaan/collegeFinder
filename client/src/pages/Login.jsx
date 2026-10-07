@@ -157,14 +157,14 @@ export default function Login() {
         <p className="text-[0.9rem] leading-relaxed text-ink-soft">
           Your shortlist already works — it is kept in this browser and survives a reload.
         </p>
-        <p className="mt-5 font-display text-numeral text-paper">{shortlist.count}</p>
+        <p className="mt-5 font-display text-numeral">{shortlist.count}</p>
         <p className="mt-2 font-mono text-[0.6rem] uppercase tracking-[0.14em] text-ink-faint">
           {shortlist.count === 1 ? 'college saved' : 'colleges saved'}
         </p>
         <div className="mt-6">
           <Link
             to="/colleges"
-            className="link-underline font-mono text-[0.66rem] uppercase tracking-[0.14em] text-paper"
+            className="link-underline font-mono text-[0.66rem] uppercase tracking-[0.14em]"
           >
             Find some more
           </Link>

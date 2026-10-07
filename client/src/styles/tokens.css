@@ -65,8 +65,15 @@
 
 /**
  * The forest band: a full-bleed dark section used for contrast
- * (count-up stats, footer, compare tray). Utilities inside it re-map to the
- * inverted palette, so `bg-paper`/`text-ink`/`border-rule` stay correct.
+ * (count-up stats, footer, compare tray).
+ *
+ * Everything here INVERTS. `--paper` becomes the forest colour and `--ink`
+ * becomes the paper colour, so inside a `.theme-forest` subtree you keep using
+ * the *role* names: `text-ink` is the light text, `bg-paper` is the dark ground.
+ * Writing `text-paper` to mean "light text" paints forest on forest — an
+ * invisible, contrast-1:1 failure that no screen reader or test notices. If you
+ * only want a forest-coloured box on a light page, use the fixed `bg-forest`
+ * with `text-paper` instead, and do not add this class.
  */
 .theme-forest {
   --paper-rgb: 15 61 62;

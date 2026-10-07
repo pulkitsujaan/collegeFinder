@@ -52,14 +52,21 @@ function SwappingWord({ words }) {
   );
 }
 
-/** One counter in the forest stats band. */
+/**
+ * One counter in the forest stats band.
+ *
+ * No colour classes here on purpose: `.theme-forest` re-maps `--paper` to the
+ * forest colour and `--ink` to the paper colour, so inside the band the text
+ * simply inherits `--ink` and comes out cream. Writing `text-paper` here — as
+ * this did — paints forest on forest and the number disappears.
+ */
 function Stat({ value, label, index }) {
   const [ref, current] = useCountUp(value ?? 0);
 
   return (
-    <div ref={ref} className="rule-t border-paper/25 pt-5">
-      <p className="font-display text-numeral tabular-nums text-paper">{formatNumber(current)}</p>
-      <p className="mt-3 font-mono text-[0.62rem] uppercase tracking-[0.14em] text-paper/60">
+    <div ref={ref} className="rule-t pt-5">
+      <p className="font-display text-numeral tabular-nums">{formatNumber(current)}</p>
+      <p className="mt-3 font-mono text-[0.62rem] uppercase tracking-[0.14em] text-ink-faint">
         <span className="mr-2 text-marigold">{String(index).padStart(2, '0')}</span>
         {label}
       </p>
@@ -211,13 +218,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats band */}
-      <section className="theme-forest bg-forest text-paper">
+      {/* Stats band — `.theme-forest` supplies both the ground and the cream text. */}
+      <section className="theme-forest">
         <div className="shell py-20 md:py-28">
-          <h2 className="max-w-3xl font-display text-display-lg text-paper">
+          <h2 className="max-w-3xl font-display text-display-lg">
             What is in the catalogue right now.
           </h2>
-          <p className="mt-5 max-w-prose text-[0.95rem] leading-relaxed text-paper/70">
+          <p className="mt-5 max-w-prose text-[0.95rem] leading-relaxed text-ink-soft">
             Every number below comes from our own sample dataset. Nothing here has been bought,
             sponsored or scraped from someone else&rsquo;s list.
           </p>
@@ -229,7 +236,7 @@ export default function Home() {
             <Stat index={4} value={totals?.exams} label="Entrance exams" />
           </div>
 
-          <p className="mt-12 font-mono text-[0.62rem] uppercase tracking-[0.14em] text-paper/50">
+          <p className="mt-12 font-mono text-[0.62rem] uppercase tracking-[0.14em] text-ink-faint">
             Sample data for prototype. Verify details on the official college website.
           </p>
         </div>

@@ -190,6 +190,18 @@ rather than stopping at `max-w-4xl`, and the type is
 `whitespace-nowrap`: a phone, or a 32-character course name, wraps rather than
 scrolling the page sideways.
 
+**`.theme-forest` inverts the tokens, so role names carry the colour.**
+Inside the dark band `--paper` *is* the forest colour and `--ink` *is* the paper
+colour, which keeps `bg-paper` / `text-ink` / `border-rule` correct without any
+`dark:` variants. The trap is that `text-paper` still reads as "light text" while
+painting forest on forest: the stats band and the login aside both did this, so
+the count-up numerals rendered at contrast 1:1 — present in the DOM, invisible on
+screen, and silent to every test. Both now inherit the band's colour or use
+`text-ink-soft` / `text-ink-faint`, and `tokens.css` says so at the definition.
+For a forest-coloured box on a *light* page — the toast and the compare tray —
+the fixed `bg-forest` with `text-paper` is correct; do not add `.theme-forest`
+there.
+
 **The swapping headline reserves its width from the longest word.**
 An invisible copy of the widest course name ("Hotel Management") sits in the
 flow, so the line does not reflow as words swap. Without it the entire hero
