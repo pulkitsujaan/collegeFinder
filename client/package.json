@@ -1,0 +1,30 @@
+{
+  "name": "client",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "CollegeDost web client — React + Vite",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource-variable/fraunces": "^5.1.0",
+    "@fontsource-variable/instrument-sans": "^5.1.0",
+    "@fontsource/ibm-plex-mono": "^5.1.0",
+    "@tanstack/react-query": "^5.62.11",
+    "lenis": "^1.1.18",
+    "motion": "^11.15.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.0.7"
+  }
+}

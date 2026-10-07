@@ -1,0 +1,111 @@
+/**
+ * Design tokens — "a well-printed campus prospectus".
+ *
+ * Tailwind's theme (tailwind.config.js) reads the `*-rgb` triplets below, so
+ * every utility colour supports opacity modifiers *and* swaps automatically
+ * when a section opts into another theme (see `.theme-forest`).
+ * The plain values are for hand-written CSS.
+ */
+
+:root {
+  /* Surfaces */
+  --paper-rgb: 244 239 230;
+  --paper-2-rgb: 234 227 214;
+  --paper-3-rgb: 223 214 198;
+  --paper: #f4efe6;
+  --paper-2: #eae3d6;
+  --paper-3: #dfd6c6;
+
+  /* Text */
+  --ink-rgb: 20 23 26;
+  --ink-soft-rgb: 74 79 85;
+  --ink-faint-rgb: 124 131 138;
+  --ink: #14171a;
+  --ink-soft: #4a4f55;
+  --ink-faint: #7c838a;
+
+  /* Brand — fixed, never re-themed */
+  --forest: #0f3d3e;
+  --forest-deep: #0a2c2d;
+  --forest-light: #1b5354;
+  --vermilion: #e4572e;
+  --vermilion-dark: #c4441f;
+  --marigold: #f2b134;
+
+  /* Lines */
+  --rule-rgb: 20 23 26;
+  --rule-soft-rgb: 20 23 26;
+  --rule-invert-rgb: 244 239 230;
+  --rule: rgba(20, 23, 26, 0.14);
+  --rule-soft: rgba(20, 23, 26, 0.08);
+
+  /* Motion */
+  --ease-editorial: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-fast: 140ms;
+  --dur-base: 240ms;
+  --dur-slow: 420ms;
+
+  /* Layout */
+  --gutter: 20px;
+  --topbar-h: 60px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 32px;
+    --topbar-h: 68px;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --gutter: 48px;
+  }
+}
+
+/**
+ * The forest band: a full-bleed dark section used for contrast
+ * (count-up stats, footer, compare tray). Utilities inside it re-map to the
+ * inverted palette, so `bg-paper`/`text-ink`/`border-rule` stay correct.
+ */
+.theme-forest {
+  --paper-rgb: 15 61 62;
+  --paper-2-rgb: 11 50 51;
+  --paper-3-rgb: 8 39 40;
+  --paper: #0f3d3e;
+  --paper-2: #0b3233;
+  --paper-3: #082728;
+  --ink-rgb: 244 239 230;
+  /* Pre-blended against the forest ground so opacity reads the same as on paper. */
+  --ink-soft-rgb: 194 200 193;
+  --ink-faint-rgb: 148 160 155;
+  --ink: #f4efe6;
+  --ink-soft: #c2c8c1;
+  --ink-faint: #94a09b;
+  --rule-rgb: 244 239 230;
+  --rule-soft-rgb: 244 239 230;
+  --rule: rgba(244, 239, 230, 0.22);
+  --rule-soft: rgba(244, 239, 230, 0.12);
+
+  background-color: var(--paper);
+  color: var(--ink);
+}
+
+/* Warm paper grain, used on hero and full-bleed covers. */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.28;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+/* Hairline helpers that read correctly on light and on forest. */
+.rule-t {
+  border-top: 1px solid var(--rule);
+}
+.rule-b {
+  border-bottom: 1px solid var(--rule);
+}

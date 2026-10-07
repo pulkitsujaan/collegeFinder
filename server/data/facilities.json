@@ -1,0 +1,16 @@
+[
+  { "slug": "hostel", "name": "Hostel", "iconKey": "hostel" },
+  { "slug": "library", "name": "Central Library", "iconKey": "library" },
+  { "slug": "labs", "name": "Modern Labs", "iconKey": "labs" },
+  { "slug": "sports", "name": "Sports Ground", "iconKey": "sports" },
+  { "slug": "canteen", "name": "Canteen & Food Court", "iconKey": "canteen" },
+  { "slug": "auditorium", "name": "Auditorium", "iconKey": "auditorium" },
+  { "slug": "wifi", "name": "Campus-wide Wi-Fi", "iconKey": "wifi" },
+  { "slug": "medical", "name": "Medical Centre", "iconKey": "medical" },
+  { "slug": "gym", "name": "Gymnasium", "iconKey": "gym" },
+  { "slug": "transport", "name": "Shuttle & Transport", "iconKey": "transport" },
+  { "slug": "placements", "name": "Placement Cell", "iconKey": "placements" },
+  { "slug": "incubation", "name": "Incubation Centre", "iconKey": "incubation" },
+  { "slug": "banking", "name": "Bank & ATM on Campus", "iconKey": "banking" },
+  { "slug": "counselling", "name": "Counselling & Wellness", "iconKey": "counselling" }
+]
