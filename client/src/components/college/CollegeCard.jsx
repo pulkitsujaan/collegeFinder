@@ -27,6 +27,7 @@ export default function CollegeCard({ college }) {
         aria-hidden="true"
       >
         <CollegeCover
+          id={college.id}
           slug={college.slug}
           name={college.name}
           shortName={college.shortName}

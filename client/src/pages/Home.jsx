@@ -107,23 +107,45 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="shell pt-14 pb-16 md:pt-20 md:pb-24">
-        <p className="eyebrow mb-8">Sample data · prototype · 2026 cycle</p>
+      {/* Hero.
+          The photograph is a full-bleed layer behind the type, not a band beside
+          it. Two washes sit on top: an all-over paper tint that pulls the image
+          into the palette, and a left-to-right gradient that stays nearly solid
+          where the headline and sentence builder are and opens up on the right
+          so the photo actually reads. Tune the strength at `bg-paper/62`. */}
+      <section className="relative isolate overflow-hidden border-b border-rule">
+        <img
+          src="/hero-cover.webp"
+          alt=""
+          aria-hidden="true"
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 h-full w-full object-cover object-[center_28%]"
+          style={{ filter: 'saturate(0.62) contrast(1.03)' }}
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-paper/90 md:bg-paper/60" />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 hidden bg-gradient-to-r from-paper from-35% via-paper/70 via-70% to-transparent md:block"
+        />
 
-        <h1 className="max-w-5xl font-display text-display-xl">
-          Find your
-          <br />
-          {streamWords.length > 0 ? <SwappingWord words={streamWords} /> : 'course'}.
-        </h1>
+        <div className="shell relative pt-14 pb-16 md:pt-20 md:pb-24">
+          <p className="eyebrow mb-8">Sample data · prototype · 2026 cycle</p>
 
-        <p className="mt-8 max-w-prose text-[1.05rem] leading-[1.7] text-ink-soft">
-          Real colleges, real cities, and the numbers that actually decide things — fees,
-          packages, cutoffs. Start with a sentence, end with a shortlist.
-        </p>
+          <h1 className="max-w-5xl font-display text-display-xl">
+            Find your
+            <br />
+            {streamWords.length > 0 ? <SwappingWord words={streamWords} /> : 'course'}.
+          </h1>
 
-        <div className="mt-14">
-          <SentenceBuilder meta={meta.data} />
+          <p className="mt-8 max-w-prose text-[1.05rem] leading-[1.7] text-ink-soft">
+            Real colleges, real cities, and the numbers that actually decide things — fees,
+            packages, cutoffs. Start with a sentence, end with a shortlist.
+          </p>
+
+          <div className="mt-14">
+            <SentenceBuilder meta={meta.data} />
+          </div>
         </div>
       </section>
 
@@ -268,13 +290,18 @@ export default function Home() {
               {upcoming.map((exam) => (
                 <li
                   key={exam.slug}
-                  className="w-[20rem] shrink-0 snap-start border border-rule-soft p-5"
+                  className="group relative w-[20rem] shrink-0 snap-start border border-rule-soft p-5 transition-colors hover:border-ink/40"
                 >
                   <p className="font-mono text-[0.56rem] uppercase tracking-[0.14em] text-ink-soft">
                     {exam.stream}
                   </p>
                   <h3 className="mt-2 font-display text-xl leading-tight tracking-[-0.02em]">
-                    <Link to={`/exams/${exam.slug}`} className="link-underline">
+                    {/* Stretched link: the whole card is the hit area, but only
+                        the name is focusable and underlined. */}
+                    <Link
+                      to={`/exams/${exam.slug}`}
+                      className="link-underline after:absolute after:inset-0"
+                    >
                       {exam.name}
                     </Link>
                   </h3>

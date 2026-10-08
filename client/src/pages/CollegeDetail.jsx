@@ -154,6 +154,7 @@ export default function CollegeDetail() {
       {/* Cover with the name overlapping its lower edge. */}
       <div className="shell pt-6">
         <CollegeCover
+          id={college.id}
           slug={college.slug}
           name={college.name}
           shortName={college.shortName}
@@ -163,8 +164,10 @@ export default function CollegeDetail() {
         />
       </div>
 
-      <header className="shell -mt-14 md:-mt-20">
-        <div className="border border-rule bg-paper p-6 md:p-10">
+      <header className="shell -mt-10 md:-mt-14">
+        {/* The card still overlaps the cover, but the padding-top carries the
+            eyebrow clear of the image so the name never sits on the banner. */}
+        <div className="border border-rule bg-paper px-6 pt-10 pb-6 md:px-10 md:pt-16 md:pb-10">
           <div className="flex flex-wrap items-start justify-between gap-x-10 gap-y-6">
             <div className="max-w-3xl">
               <p className="eyebrow mb-3 flex flex-wrap items-center gap-x-3 gap-y-1">
@@ -259,7 +262,7 @@ export default function CollegeDetail() {
       <div className="shell mt-12 grid gap-14 lg:grid-cols-[1fr_20rem] lg:gap-16">
         <div className="min-w-0 space-y-16">
           <section id="overview" className="scroll-mt-32">
-            <h2 className="eyebrow mb-5">Overview</h2>
+            <h2 className="mb-6 font-display text-display-sm">Overview</h2>
             <p className="max-w-prose text-[1.02rem] leading-[1.75] text-ink-soft">
               {college.description}
             </p>
@@ -279,7 +282,7 @@ export default function CollegeDetail() {
           </section>
 
           <section id="courses" className="scroll-mt-32">
-            <h2 className="eyebrow mb-5">Courses &amp; Fees</h2>
+            <h2 className="mb-6 font-display text-display-sm">Courses &amp; Fees</h2>
             <div className="overflow-x-auto" data-lenis-prevent>
               <table className="w-full min-w-[44rem] border-collapse text-left">
                 <thead>
@@ -331,7 +334,7 @@ export default function CollegeDetail() {
           </section>
 
           <section id="placements" className="scroll-mt-32">
-            <h2 className="eyebrow mb-5">Placements</h2>
+            <h2 className="mb-6 font-display text-display-sm">Placements</h2>
 
             <div className="grid gap-8 sm:grid-cols-2">
               <div className="rule-t pt-4">
@@ -361,7 +364,7 @@ export default function CollegeDetail() {
           </section>
 
           <section id="exams" className="scroll-mt-32">
-            <h2 className="eyebrow mb-5">Exams accepted</h2>
+            <h2 className="mb-6 font-display text-display-sm">Exams accepted</h2>
             {college.exams.length === 0 ? (
               <p className="text-sm text-ink-soft">
                 This college is listed without an entrance exam in the sample data.
@@ -384,7 +387,7 @@ export default function CollegeDetail() {
 
           {college.facilities.length > 0 && (
             <section id="facilities" className="scroll-mt-32">
-              <h2 className="eyebrow mb-5">Facilities</h2>
+              <h2 className="mb-6 font-display text-display-sm">Facilities</h2>
               <ul className="grid grid-cols-2 gap-x-8 sm:grid-cols-3">
                 {college.facilities.map((facility) => (
                   <li
@@ -408,7 +411,7 @@ export default function CollegeDetail() {
           />
 
           <div className="border border-rule-soft bg-paper-2/50 p-5">
-            <h2 className="eyebrow mb-4">Fee range</h2>
+            <h2 className="mb-4 font-display text-display-sm">Fee range</h2>
             {college.feeRange ? (
               <>
                 <p className="font-display text-3xl tracking-[-0.02em]">

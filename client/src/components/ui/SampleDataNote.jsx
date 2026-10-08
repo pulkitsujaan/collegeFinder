@@ -18,7 +18,8 @@ export default function SampleDataNote({ variant = 'inline', className = '' }) {
   return (
     <p className={`font-mono text-[0.68rem] leading-relaxed text-ink-soft ${className}`}>
       Sample data for prototype. Fees, packages, ratings and cutoffs are illustrative —
-      verify details on the official college website.
+      verify details on the official college website. Cover photographs are illustrative
+      stock images, not pictures of the actual campus.
     </p>
   );
 }

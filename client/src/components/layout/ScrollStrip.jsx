@@ -50,6 +50,10 @@ export default function ScrollStrip({ children, label, className = '' }) {
     };
   }, [measure]);
 
+  // Capture is deliberately NOT taken here. Capturing on pointerdown retargets
+  // the matching pointerup to the strip, so the browser dispatches click on the
+  // strip's ancestor and any link inside the card never navigates. Capture is
+  // taken in onPointerMove instead, once the gesture is definitely a drag.
   const onPointerDown = (event) => {
     if (event.pointerType === 'touch') return;
     drag.current = {
@@ -58,13 +62,19 @@ export default function ScrollStrip({ children, label, className = '' }) {
       startScroll: ref.current.scrollLeft,
       moved: false,
     };
-    ref.current.setPointerCapture(event.pointerId);
   };
 
   const onPointerMove = (event) => {
     if (!drag.current.active) return;
     const delta = event.clientX - drag.current.startX;
-    if (Math.abs(delta) > 3) drag.current.moved = true;
+
+    if (!drag.current.moved) {
+      if (Math.abs(delta) <= 3) return;
+      drag.current.moved = true;
+      // Only now, so the pointer keeps following even if it leaves the strip.
+      ref.current.setPointerCapture?.(event.pointerId);
+    }
+
     ref.current.scrollLeft = drag.current.startScroll - delta;
   };
 
