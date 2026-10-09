@@ -7,13 +7,15 @@ import { getDb } from '../db/connection.js';
 export const COOKIE_NAME = 'collegedost_token';
 
 /**
- * The session cookie is httpOnly so no script can read it, SameSite=Lax so a
- * cross-site form post cannot ride along on it, and `secure` in production.
+ * The session cookie is httpOnly so no script can read it, and SameSite is
+ * configurable because the prototype is deployed with the client and API on
+ * different origins (Vercel + Render), which requires SameSite=None; Secure.
+ * `secure` is on in production so the cookie is only ever sent over HTTPS.
  * There is no refresh token in the prototype — the cookie simply expires.
  */
 export const cookieOptions = {
   httpOnly: true,
-  sameSite: 'lax',
+  sameSite: config.cookieSameSite,
   secure: config.isProd,
   path: '/',
   maxAge: config.jwtExpiresDays * 24 * 60 * 60 * 1000,

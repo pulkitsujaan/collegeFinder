@@ -296,3 +296,22 @@ Nine routes split into nine chunks on a page whose payload is otherwise tiny.
 One boundary rather than one per route so the chrome — top bar, compare tray,
 footer — never unmounts during a navigation, which is what makes the page
 transition read as a transition rather than a rebuild.
+
+## Deployment (Vercel + Render)
+
+**The client reads its API origin from `VITE_API_URL`, falling back to `/api`.**
+Left unset, the Vite proxy handles local dev and nothing changes. Set to the
+Render origin at build time, `api/client.js` prefixes every request with it. One
+constant, no per-environment branching in the hooks.
+
+**The session cookie's `SameSite` is configuration, not a constant.**
+Vercel and Render are different sites, so a `Lax` cookie would never be sent on
+the cross-site fetch and sign-in would silently fail in production. `COOKIE_SAME_SITE`
+defaults to `none` when `NODE_ENV=production` and `lax` otherwise, keeping dev
+over http on localhost working (browsers reject `None` without `Secure`).
+
+**The server re-seeds on boot when the database file is absent.**
+`render.yaml` already seeds during the build, but Render's free tier has an
+ephemeral disk, so a restarted or redeployed instance can boot with no SQLite
+file. The check is one `SELECT COUNT(*)` and the seed takes ~100 ms, which buys
+an API that is never up-but-empty.

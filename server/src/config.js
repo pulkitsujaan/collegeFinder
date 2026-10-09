@@ -25,6 +25,10 @@ export const config = {
   seedDataDir: path.join(SERVER_ROOT, 'data'),
   jwtSecret: process.env.JWT_SECRET || 'dev-only-change-me',
   jwtExpiresDays: num(process.env.JWT_EXPIRES_DAYS, 7),
+  // The deployed client (Vercel) and API (Render) are different sites, so the
+  // session cookie must be SameSite=None to survive the cross-site fetch.
+  // Local dev stays on Lax because both run on localhost over http.
+  cookieSameSite: process.env.COOKIE_SAME_SITE || (process.env.NODE_ENV === 'production' ? 'none' : 'lax'),
 };
 
 export default config;

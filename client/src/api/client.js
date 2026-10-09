@@ -1,4 +1,8 @@
-const BASE = '/api';
+// In dev the Vite proxy forwards /api to the local server. In production the
+// API lives on its own origin (Render), so the base URL comes from the build
+// environment — VITE_API_URL=https://<service>.onrender.com
+const API_ORIGIN = (import.meta.env.VITE_API_URL || '').replace(/\/+$/, '');
+const BASE = `${API_ORIGIN}/api`;
 
 /** Error thrown for any non-2xx API response, carrying the server's code. */
 export class ApiError extends Error {

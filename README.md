@@ -173,6 +173,30 @@ auth, and the shortlist.
 - [`docs/DECISIONS.md`](docs/DECISIONS.md) — why the code looks the way it does
 - [`docs/VERIFICATION.md`](docs/VERIFICATION.md) — the manual checklist and its results
 
+### Deploying
+
+The API goes to Render and the client to Vercel. Both are configured in the repo.
+
+**1. API — Render.** Create a Blueprint from this repo; [`render.yaml`](render.yaml)
+defines the service. Then set `CLIENT_ORIGIN` in the dashboard to the Vercel
+URL from step 2 (e.g. `https://collegedost.vercel.app`), and redeploy. The build
+runs `npm run seed`, and a fresh instance re-seeds on boot if the SQLite file is
+missing, so the API never starts against an empty database.
+
+**2. Client — Vercel.** Import the repo, set **Root Directory** to `client`, and
+add an environment variable `VITE_API_URL` set to the Render service origin
+(`https://<service>.onrender.com`, no trailing slash). Then deploy.
+[`client/vercel.json`](client/vercel.json) handles the SPA rewrite so deep links
+like `/college/coep-pune` resolve.
+
+The two do not need to share a domain: the API allows the client origin through
+CORS with credentials and the session cookie switches to `SameSite=None; Secure`
+in production. Local dev is unaffected (`npm run dev` still proxies `/api`).
+
+Free Render instances have an ephemeral disk. The college catalogue is rebuilt
+on boot, but anything users write — signups and server-side shortlists — is lost
+when the instance restarts. The shortlist in `localStorage` survives.
+
 ---
 
 ## Known limits
