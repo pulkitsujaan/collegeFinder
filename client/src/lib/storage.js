@@ -6,7 +6,7 @@
  * When it is unavailable the app still works, it just forgets between reloads.
  */
 
-const PREFIX = 'collegedost:';
+const PREFIX = 'gradego:';
 
 export function readJson(key, fallback) {
   try {

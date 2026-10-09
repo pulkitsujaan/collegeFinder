@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "CollegeDost API — Express + SQLite",
+  "description": "GradeGo API — Express + SQLite",
   "main": "src/index.js",
   "scripts": {
     "dev": "node --watch src/index.js",

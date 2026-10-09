@@ -14,7 +14,7 @@ if (!isSeeded()) {
 const app = createApp();
 
 const server = app.listen(config.port, () => {
-  console.log(`[server] CollegeDost API listening on http://localhost:${config.port}`);
+  console.log(`[server] GradeGo API listening on http://localhost:${config.port}`);
   console.log(`[server] env=${config.env}  allowed origins: ${config.clientOrigins.join(', ')}`);
 });
 

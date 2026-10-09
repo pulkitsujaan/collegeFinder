@@ -1,8 +1,8 @@
 {
-  "name": "collegedost",
+  "name": "gradego",
   "private": true,
   "version": "0.1.0",
-  "description": "CollegeDost — college & university discovery platform for Indian students (prototype)",
+  "description": "GradeGo — college & university discovery platform for Indian students (prototype)",
   "type": "module",
   "engines": {
     "node": "22.x"

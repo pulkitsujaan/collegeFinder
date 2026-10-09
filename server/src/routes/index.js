@@ -14,7 +14,7 @@ const router = Router();
 router.get('/health', (req, res) => {
   res.json({
     status: 'ok',
-    service: 'collegedost-api',
+    service: 'gradego-api',
     uptime: Math.round(process.uptime()),
     database: isSeeded() ? 'seeded' : 'empty',
   });

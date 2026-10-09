@@ -1,4 +1,4 @@
-# CollegeDost
+# GradeGo
 
 A college and university discovery site for Indian students. Pick a course and a
 city, filter down, compare up to three colleges side by side, shortlist the ones
@@ -17,7 +17,7 @@ server, no Docker, no API keys.
 
 ```bash
 npm install
-npm run seed     # builds server/data/collegedost.sqlite from the sample data
+npm run seed     # builds server/data/gradego.sqlite from the sample data
 npm run dev      # API on :4000, site on :5173
 ```
 
@@ -49,7 +49,7 @@ proxies `/api` to the API, so the browser only ever talks to one origin.
 |---|---|---|
 | `PORT` | `4000` | API port |
 | `CLIENT_ORIGIN` | `http://localhost:5173` | Comma-separated CORS allow-list |
-| `DATABASE_FILE` | `data/collegedost.sqlite` | Relative to `server/` |
+| `DATABASE_FILE` | `data/gradego.sqlite` | Relative to `server/` |
 | `JWT_SECRET` | `dev-only-change-me` | **Change this for anything real** |
 | `JWT_EXPIRES_DAYS` | `7` | Session lifetime |
 | `NODE_ENV` | `development` | `production` switches to combined logs and secure cookies |
@@ -179,7 +179,7 @@ The API goes to Render and the client to Vercel. Both are configured in the repo
 
 **1. API — Render.** Create a Blueprint from this repo; [`render.yaml`](render.yaml)
 defines the service. Then set `CLIENT_ORIGIN` in the dashboard to the Vercel
-URL from step 2 (e.g. `https://collegedost.vercel.app`), and redeploy. The build
+URL from step 2 (e.g. `https://gradego.vercel.app`), and redeploy. The build
 runs `npm run seed`, and a fresh instance re-seeds on boot if the SQLite file is
 missing, so the API never starts against an empty database.
 

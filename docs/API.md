@@ -52,7 +52,7 @@ says otherwise.
 Liveness probe. Never touches the database beyond a table check.
 
 ```json
-{ "status": "ok", "service": "collegedost-api", "uptime": 42, "database": "seeded" }
+{ "status": "ok", "service": "gradego-api", "uptime": 42, "database": "seeded" }
 ```
 
 `database` is `"seeded"` or `"empty"` — useful when a page comes back blank and
@@ -376,7 +376,7 @@ Same shape as `meta.courses`.
 
 ## Auth
 
-The session is a JWT in an **httpOnly** cookie named `collegedost_token`
+The session is a JWT in an **httpOnly** cookie named `gradego_token`
 (`SameSite=Lax`, `Secure` in production, 7-day expiry by default). It is not
 readable by JavaScript, so an XSS bug cannot walk off with it.
 

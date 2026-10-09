@@ -1,4 +1,4 @@
-# CLAUDE.md — College Discovery Platform (working name: **CollegeDost**)
+# CLAUDE.md — College Discovery Platform (working name: **GradeGo**)
 
 You are building the **first working prototype** of a college & university discovery website for Indian students, in the same product space as careermantra.net: students pick a course and city, filter colleges, compare them, shortlist them, and view detailed college pages.
 

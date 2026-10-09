@@ -1,6 +1,6 @@
 # Decisions
 
-A running log of choices made while building the CollegeDost prototype, and why.
+A running log of choices made while building the GradeGo prototype, and why.
 Newest entries at the bottom.
 
 ---
@@ -315,3 +315,21 @@ over http on localhost working (browsers reject `None` without `Secure`).
 ephemeral disk, so a restarted or redeployed instance can boot with no SQLite
 file. The check is one `SELECT COUNT(*)` and the seed takes ~100 ms, which buys
 an API that is never up-but-empty.
+
+## Rename to GradeGo
+
+**The product is GradeGo; the internal identifiers were renamed to match.**
+The name was CollegeDost during the build and is now GradeGo everywhere a user
+or an operator can see it — page titles, the footer, the health endpoint's
+`service` field, the README, and the config samples.
+
+Renamed beyond the display name, deliberately, because a prototype with two
+names in it costs more than the churn: the root package (`gradego`), the SQLite
+file (`data/gradego.sqlite`), the session cookie (`gradego_token`), the Render
+service (`gradego-api`), the localStorage prefix (`gradego:`), and the test that
+asserts the cookie name.
+
+Two consequences worth knowing. The old localStorage prefix meant the browser
+shortlist starts empty after this change — `gradego:` is a different namespace,
+so nothing carries over. And the database file was renamed, so run `npm run seed`
+once on any machine holding the old `collegedost.sqlite`.

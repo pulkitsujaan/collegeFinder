@@ -20,7 +20,7 @@ export const config = {
     .split(',')
     .map((origin) => origin.trim())
     .filter(Boolean),
-  databaseFile: path.resolve(SERVER_ROOT, process.env.DATABASE_FILE || 'data/collegedost.sqlite'),
+  databaseFile: path.resolve(SERVER_ROOT, process.env.DATABASE_FILE || 'data/gradego.sqlite'),
   schemaFile: path.join(SERVER_ROOT, 'src/db/schema.sql'),
   seedDataDir: path.join(SERVER_ROOT, 'data'),
   jwtSecret: process.env.JWT_SECRET || 'dev-only-change-me',

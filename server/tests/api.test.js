@@ -388,7 +388,7 @@ describe('auth + shortlist', () => {
     expect(res.body.user.passwordHash).toBeUndefined();
 
     const cookie = res.headers['set-cookie']?.join(';') ?? '';
-    expect(cookie).toContain('collegedost_token=');
+    expect(cookie).toContain('gradego_token=');
     expect(cookie.toLowerCase()).toContain('httponly');
   });
 

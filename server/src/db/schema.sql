@@ -1,4 +1,4 @@
--- CollegeDost schema (SQLite).
+-- GradeGo schema (SQLite).
 -- Applied by `npm run seed`, which drops and recreates every table so the seed
 -- is idempotent. All SQL lives under server/src/db/.
 

@@ -1,4 +1,4 @@
-# Handoff — CollegeDost
+# Handoff — GradeGo
 
 Complete working context for picking this project up on any machine.
 Written 2026-10-09. For the product spec and rules, read [`CLAUDE.md`](../CLAUDE.md) first.
@@ -7,7 +7,7 @@ Written 2026-10-09. For the product spec and rules, read [`CLAUDE.md`](../CLAUDE
 
 ## 1. What this is
 
-CollegeDost — a college/university discovery site for Indian students. Students
+GradeGo — a college/university discovery site for Indian students. Students
 pick a course and city, filter colleges, compare up to three, shortlist them, and
 open detail pages. Prototype stage: the whole feature set runs front to back
 against a real Express + SQLite backend, but the data is sample data.
@@ -101,7 +101,7 @@ client/
 
 ```bash
 npm install          # root — installs both workspaces
-npm run seed         # builds server/data/collegedost.sqlite from the JSON
+npm run seed         # builds server/data/gradego.sqlite from the JSON
 npm run dev          # server :4000 + client :5173 (concurrently)
 ```
 

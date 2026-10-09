@@ -79,7 +79,7 @@ export default function Home() {
   const topRated = useColleges({ sort: 'rating', pageSize: 6 });
   const exams = useExams({});
 
-  useDocumentTitle('CollegeDost — find the college that fits');
+  useDocumentTitle('GradeGo — find the college that fits');
 
   const streamWords = useMemo(
     () => (meta.data?.streams ?? []).slice(0, 6).map((stream) => stream.stream),

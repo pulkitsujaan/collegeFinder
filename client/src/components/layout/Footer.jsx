@@ -62,7 +62,7 @@ export default function Footer() {
             — this is a prototype. College names are real; fees, packages, ratings and dates are
             illustrative. Always verify details on the official college website.
           </p>
-          <p className="font-mono uppercase tracking-[0.14em]">© {year} CollegeDost</p>
+          <p className="font-mono uppercase tracking-[0.14em]">© {year} GradeGo</p>
         </div>
       </div>
     </footer>

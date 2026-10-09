@@ -4,7 +4,7 @@ import config from '../config.js';
 import { ApiError } from './error.js';
 import { getDb } from '../db/connection.js';
 
-export const COOKIE_NAME = 'collegedost_token';
+export const COOKIE_NAME = 'gradego_token';
 
 /**
  * The session cookie is httpOnly so no script can read it, and SameSite is

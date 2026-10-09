@@ -1,13 +1,13 @@
 # Render blueprint — deploys the API. The client goes to Vercel (see client/vercel.json).
 #
 # After the first deploy, set CLIENT_ORIGIN in the Render dashboard to the
-# Vercel URL, e.g. https://collegedost.vercel.app
+# Vercel URL, e.g. https://gradego.vercel.app
 #
 # Free instances have an ephemeral disk: the SQLite file is rebuilt on boot
 # when it is missing, so shortlists/accounts only live until the next restart.
 services:
   - type: web
-    name: collegedost-api
+    name: gradego-api
     runtime: node
     plan: free
     buildCommand: npm install && npm run seed
