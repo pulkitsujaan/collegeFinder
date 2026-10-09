@@ -29,7 +29,7 @@ export default function Footer() {
       <div className="shell grid gap-12 py-16 md:grid-cols-12 md:py-20">
         <div className="md:col-span-5">
           <p className="font-display text-3xl tracking-[-0.02em] md:text-4xl">
-            College<span className="text-marigold">Dost</span>
+            Grade<span className="text-marigold">Go</span>
           </p>
           <p className="mt-4 max-w-sm text-sm text-ink-soft">
             A calmer way to find a college in India. Pick a course, pick a city, then narrow by
