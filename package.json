@@ -5,7 +5,7 @@
   "description": "CollegeDost — college & university discovery platform for Indian students (prototype)",
   "type": "module",
   "engines": {
-    "node": ">=20"
+    "node": "22.x"
   },
   "workspaces": [
     "server",
